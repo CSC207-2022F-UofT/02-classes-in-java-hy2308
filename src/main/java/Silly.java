@@ -79,7 +79,9 @@ public class Silly implements Comparable<Silly>{
      *       strings (e.g. this.name = [first string] + [second string]).
      *       Make sure you document this method!
      */
-
+    public Silly(String str1, String str2) {
+        this.name = str1 + str2;
+    }
 
 
 
@@ -116,7 +118,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {1,1,2,3};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -134,6 +136,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
@@ -161,6 +164,13 @@ public class Silly implements Comparable<Silly>{
 
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
+       if (o == null){
+           return false;
+       }
+        if (this.getClass() != o.getClass()) {
+            return false;
+        }
+        return this.name.equals(other.name);
     }
 
     /**
@@ -184,7 +194,7 @@ public class Silly implements Comparable<Silly>{
      * object is less than, equal to, or greater than the specified object.
      */
     @Override
-    public int compareTo(Silly other) {
+    public int compareTo(Silly other){
         /**
          * TODO (Task 5): Implement the body of this method.
          *                A positive number should be returned if this.name
@@ -194,6 +204,13 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+         if(this.name.length() > other.name.length()){
+             return 1;
+         }
+        else if(this.name.length() < other.name.length()){
+            return -1;
+        }
+        else return 0;
     }
 
     /*
